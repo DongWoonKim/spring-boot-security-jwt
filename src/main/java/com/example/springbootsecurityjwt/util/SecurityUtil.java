@@ -1,4 +1,4 @@
-package com.example.springbootsecurityjwt;
+package com.example.springbootsecurityjwt.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

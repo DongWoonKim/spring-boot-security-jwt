@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    // 로그인시에 DB에서 유저정보와 군한정보를 가져오게 된다.
+    // 로그인시에 DB에서 유저정보와 권한정보를 가져오게 된다.
     // 해당 정보를 기반으로 userDetails.User 객체를 생성해서 리턴한다.
     @Override
     @Transactional

@@ -1,11 +1,11 @@
 package com.example.springbootsecurityjwt.service;
 
-import com.example.springbootsecurityjwt.SecurityUtil;
 import com.example.springbootsecurityjwt.dto.UserDto;
 import com.example.springbootsecurityjwt.entity.Authority;
 import com.example.springbootsecurityjwt.entity.User;
 import com.example.springbootsecurityjwt.exception.DuplicateMemberException;
 import com.example.springbootsecurityjwt.repository.UserRepository;
+import com.example.springbootsecurityjwt.util.SecurityUtil;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,11 +42,10 @@ public class UserService {
                 .activated(true)
                 .build();
 
-
         return UserDto.from(userRepository.save(user));
     }
 
-    // username을 기준으로 정보를 가져온다.
+    // username을 기준으로 user객체와 권한 정보를 가져온다.
     @Transactional(readOnly = true)
     public UserDto getUserWithAuthorities(String username) {
         return UserDto.from(userRepository.findOneWithAuthoritiesByUsername(username).orElse(null));

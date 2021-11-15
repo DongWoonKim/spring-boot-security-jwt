@@ -26,6 +26,7 @@ public class UserController {
         response.sendRedirect("/api/user");
     }
 
+    // 회원가입
     @PostMapping("/signup")
     public ResponseEntity<UserDto> signup(
             @Valid @RequestBody UserDto userDto
@@ -33,12 +34,14 @@ public class UserController {
         return ResponseEntity.ok(userService.signup(userDto));
     }
 
+    // @PreAuthorize를 통해 USER, ADMIN 두가지 권한 모두를 허용
     @GetMapping("/user")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<UserDto> getMyUserInfo(HttpServletRequest request) {
         return ResponseEntity.ok(userService.getMyUserWithAuthorities());
     }
 
+    // ADMIN 권한만 호출할 수 있음
     @GetMapping("/user/{username}")
     @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<UserDto> getUserInfo(@PathVariable String username) {
