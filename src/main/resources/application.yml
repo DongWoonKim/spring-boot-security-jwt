@@ -1,0 +1,32 @@
+spring:
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+jwt:
+  header: Authorization
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
+  #echo 'spring-boot-com.example.springbootsecurityjwt.jwt-tutorial-secret'|base64
+  secret: c3ByaW5nLWJvb3QtY29tLmV4YW1wbGUuc3ByaW5nYm9vdHNlY3VyaXR5and0Lmp3dC10dXRvcmlhbC1zZWNyZXQK
+  token-validity-in-seconds: 86400
+
+logging:
+  level:
+    org.springframework: debug
