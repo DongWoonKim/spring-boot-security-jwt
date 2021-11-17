@@ -54,6 +54,6 @@ public class UserService {
     // 현재 SecurityContext에 저장된 (getCurrentUsername()) username의 user정보와 권한 정보를 가져온다.
     @Transactional(readOnly = true)
     public UserDto getMyUserWithAuthorities() {
-        return UserDto.from(SecurityUtil.getCurrentUsername().flatMap(userRepository::findOneWithAuthoritiesByUsername).orElse(null));
+        return UserDto.from(SecurityUtil.getInstance().getCurrentUsername().flatMap(userRepository::findOneWithAuthoritiesByUsername).orElse(null));
     }
 }

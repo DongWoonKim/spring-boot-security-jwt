@@ -35,9 +35,10 @@ public class UserController {
     }
 
     // @PreAuthorize를 통해 USER, ADMIN 두가지 권한 모두를 허용
+    // question : param -> request ?
     @GetMapping("/user")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
-    public ResponseEntity<UserDto> getMyUserInfo(HttpServletRequest request) {
+    public ResponseEntity<UserDto> getMyUserInfo(/*HttpServletRequest request*/) {
         return ResponseEntity.ok(userService.getMyUserWithAuthorities());
     }
 

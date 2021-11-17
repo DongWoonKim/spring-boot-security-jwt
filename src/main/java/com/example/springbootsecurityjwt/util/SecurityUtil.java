@@ -8,10 +8,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Optional;
 
+// 계속 생성하는게 좋을지?
 public class SecurityUtil {
     private static final Logger logger = LoggerFactory.getLogger(SecurityUtil.class);
 
-    private SecurityUtil() {
+    private SecurityUtil() {}
+
+    public static SecurityUtil getInstance() {
+        return new SecurityUtil();
     }
 
     // Security Context의 Authentication 객체를 이용해 username을 리턴해주는 메서드
